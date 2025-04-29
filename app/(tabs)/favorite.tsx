@@ -12,11 +12,13 @@ import { COLORS, SPACING } from '@/theme/theme';
 import HeaderBar from '@/components/HeaderBar';
 import EmptyListAnimation from '@/components/EmptyListAnimation';
 import FavoritesItemCard from '@/components/FavoritesItemCard';
+import { useRouter } from 'expo-router';
 
 const FavoritesScreen = ({ navigation }: any) => {
   const FavoritesList = useStore((state: any) => state.FavoritesList);
   const addToFavoriteList = useStore((state: any) => state.addToFavoriteList);
   const deleteFromFavoriteList = useStore((state: any) => state.deleteFromFavoriteList);
+  const router = useRouter()
 
   const ToggleFavourite = (favourite: boolean, type: string, id: string) => {
     favourite ? deleteFromFavoriteList(type, id) : addToFavoriteList(type, id);
@@ -38,14 +40,10 @@ const FavoritesScreen = ({ navigation }: any) => {
                 {FavoritesList.map((data: any) => (
                   <TouchableOpacity
                     key={data.id}
-                    onPress={() => {
-                      navigation.push('Details', {
-                        index: data.index,
-                        id: data.id,
-                        type: data.type,
-                      });
-                    }}
-                  >
+                               onPress={() => {
+  router.push(`/details/${data.id}`);
+}}>
+                  
                     <FavoritesItemCard
                       id={data.id}
                       imagelink_portrait={data.imagelink_portrait}

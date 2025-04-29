@@ -6,7 +6,7 @@ const SneakersData = [
     colorway: 'White/Metallic Silver',
     imagelink_square: require('@/assets/shoes/shoe1.jpg'),
     imagelink_portrait: require('@/assets/shoes/shoe1.jpg'),
-    sizes: [
+    prices: [
       { size: 'US 7', price: '180', currency: '$' },
       { size: 'US 8', price: '180', currency: '$' },
       { size: 'US 9', price: '180', currency: '$' },
@@ -23,8 +23,8 @@ const SneakersData = [
     description: `The '80s basketball icon returns with classic details and throwback style. This low-top silhouette delivers old-school vibes with premium leather and bold color blocking.`,
     colorway: 'University Red/White',
     imagelink_square: require('@/assets/shoes/shoe2.jpg'),
-    imagelink_portrait:require('@/assets/shoes/shoe1.jpg'),
-    sizes: [
+    imagelink_portrait:require('@/assets/shoes/shoe2.jpg'),
+    prices: [
       { size: 'US 7', price: '120', currency: '$' },
       { size: 'US 8', price: '120', currency: '$' },
       { size: 'US 9', price: '120', currency: '$' },
@@ -42,7 +42,7 @@ const SneakersData = [
     colorway: 'Black/University Blue',
     imagelink_square: require('@/assets/shoes/shoe1.jpg'),
     imagelink_portrait: require('@/assets/shoes/shoe1.jpg'),
-    sizes: [
+    prices: [
       { size: 'US 7', price: '200', currency: '$' },
       { size: 'US 8', price: '200', currency: '$' },
       { size: 'US 9', price: '200', currency: '$' },
@@ -60,7 +60,7 @@ const SneakersData = [
     colorway: 'White/Black',
     imagelink_square: require('@/assets/shoes/shoe1.jpg'),
     imagelink_portrait: require('@/assets/shoes/shoe1.jpg'),
-    sizes: [
+    prices: [
       { size: 'US 7', price: '110', currency: '$' },
       { size: 'US 8', price: '110', currency: '$' },
       { size: 'US 9', price: '110', currency: '$' },

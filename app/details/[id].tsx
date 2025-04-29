@@ -22,12 +22,13 @@ import PaymentFooter from '@/components/PaymentFooter';
 
 const DetailsScreen = () => {
   const { id } = useLocalSearchParams();
-  const router = useRouter();  // Initialize useRouter
+  const router = useRouter();  
   
   const ItemOfIndex = useStore((state: any) => {
     const list = state.CoffeeList.concat(state.BeanList);
     return list.find((item: any) => item.id === id); 
   });
+
 
   const addToFavoriteList = useStore((state: any) => state.addToFavoriteList);
   const deleteFromFavoriteList = useStore(
@@ -36,7 +37,7 @@ const DetailsScreen = () => {
   const addToCart = useStore((state: any) => state.addToCart);
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
 
-  const [price, setPrice] = useState(ItemOfIndex ? ItemOfIndex.prices[0] : null);
+ const [price, setPrice] = useState(ItemOfIndex.prices[0]);
   const [fullDesc, setFullDesc] = useState(false);
 
   const ToggleFavourite = (favourite: boolean, type: string, id: string) => {
