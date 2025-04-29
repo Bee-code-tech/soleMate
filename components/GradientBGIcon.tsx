@@ -1,24 +1,25 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import {COLORS, SPACING} from '../theme/theme';
-import CustomIcon from './CustomIcon';
+import { Ionicons } from '@expo/vector-icons'; 
+import { COLORS, SPACING } from '../theme/theme';
 
 interface GradientBGIconProps {
-  name: string; 
+  name: keyof typeof Ionicons.glyphMap; 
   color: string;
-  size: number;
+  size: number; 
 }
 
-const GradientBGIcon: React.FC<GradientBGIconProps> = ({name, color, size}) => {
+const GradientBGIcon: React.FC<GradientBGIconProps> = ({ name, color, size }) => {
   return (
     <View style={styles.Container}>
       <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 1}}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
         colors={[COLORS.primaryGreyHex, COLORS.primaryBlackHex]}
-        style={styles.LinearGradientBG}>
-        <CustomIcon name={name} color={color} size={size} />
+        style={styles.LinearGradientBG}
+      >
+        <Ionicons name={name} color={color} size={size} /> 
       </LinearGradient>
     </View>
   );

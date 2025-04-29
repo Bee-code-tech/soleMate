@@ -9,7 +9,7 @@ import {
 } from '../theme/theme';
 
 interface PriceProps {
-  price: string;
+  price: string ;
   currency: string;
 }
 

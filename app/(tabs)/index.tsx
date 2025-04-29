@@ -25,6 +25,7 @@ import CustomIcon from '@/components/CustomIcon';
 import {FlatList} from 'react-native';
 import ProductCard from '@/components/ProductCard';
 import {Dimensions} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {};
@@ -134,53 +135,53 @@ const HomeScreen = () => {
         <HeaderBar />
 
         <Text style={styles.ScreenTitle}>
-          Find the best{'\n'}coffee for you
+          SoleMate is the best!
         </Text>
 
         {/* Search Input */}
 
         <View style={styles.InputContainerComponent}>
-          <TouchableOpacity
-            onPress={() => {
-              searchCoffee(searchText);
-            }}>
-            <CustomIcon
-              style={styles.InputIcon}
-              name="search"
-              size={FONTSIZE.size_20}
-              color={
-                searchText.length > 0
-                  ? COLORS.primaryOrangeHex
-                  : COLORS.primaryLightGreyHex
-              }
-            />
-          </TouchableOpacity>
-          <TextInput
-            placeholder="Find Your Coffee..."
-            value={searchText}
-            onChangeText={text => {
-              setSearchText(text);
-              searchCoffee(text);
-            }}
-            placeholderTextColor={COLORS.primaryLightGreyHex}
-            style={styles.TextInputContainer}
+      <TouchableOpacity
+        onPress={() => {
+          searchCoffee(searchText);
+        }}>
+        <Ionicons
+          style={styles.InputIcon}
+          name="search"
+          size={FONTSIZE.size_20}
+          color={
+            searchText.length > 0
+              ? COLORS.primaryOrangeHex
+              : COLORS.primaryLightGreyHex
+          }
+        />
+      </TouchableOpacity>
+      <TextInput
+        placeholder="Find Your Coffee..."
+        value={searchText}
+        onChangeText={text => {
+          setSearchText(text);
+          searchCoffee(text);
+        }}
+        placeholderTextColor={COLORS.primaryLightGreyHex}
+        style={styles.TextInputContainer}
+      />
+      {searchText.length > 0 ? (
+        <TouchableOpacity
+          onPress={() => {
+            resetSearchCoffee();
+          }}>
+          <Ionicons
+            style={styles.InputIcon}
+            name="close"
+            size={FONTSIZE.size_16}
+            color={COLORS.primaryLightGreyHex}
           />
-          {searchText.length > 0 ? (
-            <TouchableOpacity
-              onPress={() => {
-                resetSearchCoffee();
-              }}>
-              <CustomIcon
-                style={styles.InputIcon}
-                name="close"
-                size={FONTSIZE.size_16}
-                color={COLORS.primaryLightGreyHex}
-              />
-            </TouchableOpacity>
-          ) : (
-            <></>
-          )}
-        </View>
+        </TouchableOpacity>
+      ) : (
+        <></>
+      )}
+    </View>
 
         {/* Category Scroller */}
 
@@ -332,6 +333,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTFAMILY.poppins_medium,
     fontSize: FONTSIZE.size_14,
     color: COLORS.primaryWhiteHex,
+    
   },
   CategoryScrollViewStyle: {
     paddingHorizontal: SPACING.space_20,

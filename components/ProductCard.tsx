@@ -9,15 +9,15 @@ import {
   View,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import {
-  BORDERRADIUS,
-  COLORS,
-  FONTFAMILY,
-  FONTSIZE,
-  SPACING,
-} from '../theme/theme';
-import CustomIcon from './CustomIcon';
+import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from Expo
 import BGIcon from './BGIcon';
+import { 
+  BORDERRADIUS, 
+  COLORS, 
+  FONTFAMILY, 
+  FONTSIZE, 
+  SPACING 
+} from '../theme/theme';
 
 const CARD_WIDTH = Dimensions.get('window').width * 0.32;
 
@@ -57,8 +57,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
         style={styles.CardImageBG}
         resizeMode="cover">
         <View style={styles.CardRatingContainer}>
-          <CustomIcon
-            name={'star'}
+          <Ionicons
+            name="star" // Use the Ionicons star icon
             color={COLORS.primaryOrangeHex}
             size={FONTSIZE.size_16}
           />
@@ -86,9 +86,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}>
           <BGIcon
             color={COLORS.primaryWhiteHex}
-            name={'add'}
+            name="add"
             BGColor={COLORS.primaryOrangeHex}
-            size={FONTSIZE.size_10}
+            size={FONTSIZE.size_18}
           />
         </TouchableOpacity>
       </View>
