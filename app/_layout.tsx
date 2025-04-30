@@ -8,7 +8,6 @@ import { Stack } from 'expo-router';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { COLORS } from '../theme/theme';
 
-// Prevent the splash screen from hiding until assets are loaded
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -31,12 +30,12 @@ export default function RootLayout() {
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    return null; // Optionally show a loading screen or splash screen here
+    return null; 
   }
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
+      <Stack screenOptions={{ headerShown: false }}  >
         <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
        
