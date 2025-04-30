@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons'; 
 import {
   BORDERRADIUS,
   COLORS,
@@ -15,7 +16,6 @@ import {
   FONTSIZE,
   SPACING,
 } from '../theme/theme';
-import CustomIcon from './CustomIcon';
 
 interface CartItemProps {
   id: string;
@@ -44,10 +44,11 @@ const CartItem: React.FC<CartItemProps> = ({
     <View>
       {prices.length != 1 ? (
         <LinearGradient
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 1}}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
           colors={[COLORS.primaryGreyHex, COLORS.primaryBlackHex]}
-          style={styles.CartItemLinearGradient}>
+          style={styles.CartItemLinearGradient}
+        >
           <View style={styles.CartItemRow}>
             <Image source={imagelink_square} style={styles.CartItemImage} />
             <View style={styles.CartItemInfo}>
@@ -65,7 +66,8 @@ const CartItem: React.FC<CartItemProps> = ({
           {prices.map((data: any, index: any) => (
             <View
               key={index.toString()}
-              style={styles.CartItemSizeRowContainer}>
+              style={styles.CartItemSizeRowContainer}
+            >
               <View style={styles.CartItemSizeValueContainer}>
                 <View style={styles.SizeBox}>
                   <Text
@@ -75,7 +77,8 @@ const CartItem: React.FC<CartItemProps> = ({
                         fontSize:
                           type == 'Bean' ? FONTSIZE.size_12 : FONTSIZE.size_16,
                       },
-                    ]}>
+                    ]}
+                  >
                     {data.size}
                   </Text>
                 </View>
@@ -89,9 +92,10 @@ const CartItem: React.FC<CartItemProps> = ({
                   style={styles.CartItemIcon}
                   onPress={() => {
                     decrementCartItemQuantityHandler(id, data.size);
-                  }}>
-                  <CustomIcon
-                    name="minus"
+                  }}
+                >
+                  <Ionicons
+                    name="remove" // Use Ionicons "remove" for minus icon
                     color={COLORS.primaryWhiteHex}
                     size={FONTSIZE.size_10}
                   />
@@ -105,9 +109,10 @@ const CartItem: React.FC<CartItemProps> = ({
                   style={styles.CartItemIcon}
                   onPress={() => {
                     incrementCartItemQuantityHandler(id, data.size);
-                  }}>
-                  <CustomIcon
-                    name="add"
+                  }}
+                >
+                  <Ionicons
+                    name="add" // Use Ionicons "add" for plus icon
                     color={COLORS.primaryWhiteHex}
                     size={FONTSIZE.size_10}
                   />
@@ -118,10 +123,11 @@ const CartItem: React.FC<CartItemProps> = ({
         </LinearGradient>
       ) : (
         <LinearGradient
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 1}}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
           colors={[COLORS.primaryGreyHex, COLORS.primaryBlackHex]}
-          style={styles.CartItemSingleLinearGradient}>
+          style={styles.CartItemSingleLinearGradient}
+        >
           <View>
             <Image
               source={imagelink_square}
@@ -142,7 +148,8 @@ const CartItem: React.FC<CartItemProps> = ({
                       fontSize:
                         type == 'Bean' ? FONTSIZE.size_12 : FONTSIZE.size_16,
                     },
-                  ]}>
+                  ]}
+                >
                   {prices[0].size}
                 </Text>
               </View>
@@ -156,9 +163,10 @@ const CartItem: React.FC<CartItemProps> = ({
                 style={styles.CartItemIcon}
                 onPress={() => {
                   decrementCartItemQuantityHandler(id, prices[0].size);
-                }}>
-                <CustomIcon
-                  name="minus"
+                }}
+              >
+                <Ionicons
+                  name="remove" // Use Ionicons "remove" for minus icon
                   color={COLORS.primaryWhiteHex}
                   size={FONTSIZE.size_10}
                 />
@@ -172,9 +180,10 @@ const CartItem: React.FC<CartItemProps> = ({
                 style={styles.CartItemIcon}
                 onPress={() => {
                   incrementCartItemQuantityHandler(id, prices[0].size);
-                }}>
-                <CustomIcon
-                  name="add"
+                }}
+              >
+                <Ionicons
+                  name="add" // Use Ionicons "add" for plus icon
                   color={COLORS.primaryWhiteHex}
                   size={FONTSIZE.size_10}
                 />

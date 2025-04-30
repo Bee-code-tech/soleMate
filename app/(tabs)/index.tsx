@@ -41,24 +41,24 @@ const getCategoriesFromData = (data: any) => {
   return categories;
 };
 
-const getCoffeeList = (category: string, data: any) => {
+const getShoeList = (category: string, data: any) => {
   if (category == 'All') {
     return data;
   } else {
-    let coffeelist = data.filter((item: any) => item.name == category);
-    return coffeelist;
+    let ShoeList = data.filter((item: any) => item.name == category);
+    return ShoeList;
   }
 };
 
 const HomeScreen = () => {
-  const CoffeeList = useStore((state: any) => state.CoffeeList);
-  const BeanList = useStore((state: any) => state.BeanList);
+  const ShoeList = useStore((state: any) => state.ShoeList);
+  const SneakerList = useStore((state: any) => state.SneakerList);
   const addToCart = useStore((state: any) => state.addToCart);
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
   const router = useRouter()
 
   const [categories, setCategories] = useState(
-    getCategoriesFromData(CoffeeList),
+    getCategoriesFromData(ShoeList),
   );
   const [searchText, setSearchText] = useState('');
   const [categoryIndex, setCategoryIndex] = useState({
@@ -66,7 +66,7 @@ const HomeScreen = () => {
     category: categories[0],
   });
   const [sortedCoffee, setSortedCoffee] = useState(
-    getCoffeeList(categoryIndex.category, CoffeeList),
+    getShoeList(categoryIndex.category, ShoeList),
   );
 
   const ListRef: any = useRef<FlatList>();
@@ -80,7 +80,7 @@ const HomeScreen = () => {
       });
       setCategoryIndex({index: 0, category: categories[0]});
       setSortedCoffee([
-        ...CoffeeList.filter((item: any) =>
+        ...ShoeList.filter((item: any) =>
           item.name.toLowerCase().includes(search.toLowerCase()),
         ),
       ]);
@@ -93,7 +93,7 @@ const HomeScreen = () => {
       offset: 0,
     });
     setCategoryIndex({index: 0, category: categories[0]});
-    setSortedCoffee([...CoffeeList]);
+    setSortedCoffee([...ShoeList]);
     setSearchText('');
   };
 
@@ -157,7 +157,7 @@ const HomeScreen = () => {
         />
       </TouchableOpacity>
       <TextInput
-        placeholder="Find Your Coffee..."
+        placeholder="Search for shoes"
         value={searchText}
         onChangeText={text => {
           setSearchText(text);
@@ -202,7 +202,7 @@ const HomeScreen = () => {
                   });
                   setCategoryIndex({index: index, category: categories[index]});
                   setSortedCoffee([
-                    ...getCoffeeList(categories[index], CoffeeList),
+                    ...getShoeList(categories[index], ShoeList),
                   ]);
                 }}>
                 <Text
@@ -224,14 +224,14 @@ const HomeScreen = () => {
           ))}
         </ScrollView>
 
-        {/* Coffee Flatlist */}
+        {/* Shoe Flatlist */}
 
         <FlatList
           ref={ListRef}
           horizontal
           ListEmptyComponent={
             <View style={styles.EmptyListContainer}>
-              <Text style={styles.CategoryText}>No Coffee Available</Text>
+              <Text style={styles.CategoryText}>Not found</Text>
             </View>
           }
           showsHorizontalScrollIndicator={false}
@@ -261,14 +261,14 @@ const HomeScreen = () => {
           }}
         />
 
-        <Text style={styles.CoffeeBeansTitle}>Coffee Beans</Text>
+        <Text style={styles.CoffeeBeansTitle}>Exclusive Sneakers</Text>
 
         {/* Beans Flatlist */}
 
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={BeanList}
+          data={SneakerList}
           contentContainerStyle={[
             styles.FlatListContainer,
             {marginBottom: tabBarHeight},

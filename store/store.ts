@@ -3,14 +3,14 @@ import {create} from 'zustand';
 import {produce} from 'immer';
 import {persist, createJSONStorage} from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CoffeeData from '@/data/CoffeeData';
-import BeansData from '@/data/SneakersData';
+import ShoeData from '@/data/ShoesData';
+import SneakersData from '@/data/SneakersData';
 
 export const useStore = create(
   persist(
     (set, get) => ({
-      CoffeeList: CoffeeData,
-      BeanList: BeansData,
+      ShoeList: ShoeData,
+      SneakerList: SneakersData,
       CartPrice: 0,
       FavoritesList: [],
       CartList: [],
@@ -73,26 +73,26 @@ export const useStore = create(
       addToFavoriteList: (type: string, id: string) =>
         set(
           produce(state => {
-            if (type == 'Coffee') {
-              for (let i = 0; i < state.CoffeeList.length; i++) {
-                if (state.CoffeeList[i].id == id) {
-                  if (state.CoffeeList[i].favourite == false) {
-                    state.CoffeeList[i].favourite = true;
-                    state.FavoritesList.unshift(state.CoffeeList[i]);
+            if (type == 'Shoes') {
+              for (let i = 0; i < state.ShoeList.length; i++) {
+                if (state.ShoeList[i].id == id) {
+                  if (state.ShoeList[i].favourite == false) {
+                    state.ShoeList[i].favourite = true;
+                    state.FavoritesList.unshift(state.ShoeList[i]);
                   } else {
-                    state.CoffeeList[i].favourite = false;
+                    state.ShoeList[i].favourite = false;
                   }
                   break;
                 }
               }
-            } else if (type == 'Bean') {
-              for (let i = 0; i < state.BeanList.length; i++) {
-                if (state.BeanList[i].id == id) {
-                  if (state.BeanList[i].favourite == false) {
-                    state.BeanList[i].favourite = true;
-                    state.FavoritesList.unshift(state.BeanList[i]);
+            } else if (type == 'Sneaker') {
+              for (let i = 0; i < state.SneakerList.length; i++) {
+                if (state.SneakerList[i].id == id) {
+                  if (state.SneakerList[i].favourite == false) {
+                    state.SneakerList[i].favourite = true;
+                    state.FavoritesList.unshift(state.SneakerList[i]);
                   } else {
-                    state.BeanList[i].favourite = false;
+                    state.SneakerList[i].favourite = false;
                   }
                   break;
                 }
@@ -103,24 +103,24 @@ export const useStore = create(
       deleteFromFavoriteList: (type: string, id: string) =>
         set(
           produce(state => {
-            if (type == 'Coffee') {
-              for (let i = 0; i < state.CoffeeList.length; i++) {
-                if (state.CoffeeList[i].id == id) {
-                  if (state.CoffeeList[i].favourite == true) {
-                    state.CoffeeList[i].favourite = false;
+            if (type == 'Shoes') {
+              for (let i = 0; i < state.ShoeList.length; i++) {
+                if (state.ShoeList[i].id == id) {
+                  if (state.ShoeList[i].favourite == true) {
+                    state.ShoeList[i].favourite = false;
                   } else {
-                    state.CoffeeList[i].favourite = true;
+                    state.ShoeList[i].favourite = true;
                   }
                   break;
                 }
               }
-            } else if (type == 'Beans') {
-              for (let i = 0; i < state.BeanList.length; i++) {
-                if (state.BeanList[i].id == id) {
-                  if (state.BeanList[i].favourite == true) {
-                    state.BeanList[i].favourite = false;
+            } else if (type == 'Sneaker') {
+              for (let i = 0; i < state.SneakerList.length; i++) {
+                if (state.SneakerList[i].id == id) {
+                  if (state.SneakerList[i].favourite == true) {
+                    state.SneakerList[i].favourite = false;
                   } else {
-                    state.BeanList[i].favourite = true;
+                    state.SneakerList[i].favourite = true;
                   }
                   break;
                 }
@@ -210,7 +210,7 @@ export const useStore = create(
         ),
     }),
     {
-      name: 'coffee-app',
+      name: 'soulMate',
       storage: createJSONStorage(() => AsyncStorage),
     },
   ),

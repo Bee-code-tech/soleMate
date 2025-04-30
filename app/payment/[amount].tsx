@@ -22,7 +22,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useStore } from '@/store/store';
 import PopUpAnimation from '@/components/PopUpAnimation';
-import { useLocalSearchParams } from 'expo-router'; 
+import { useLocalSearchParams, useRouter } from 'expo-router'; 
 
 const PaymentList = [
   {
@@ -50,6 +50,7 @@ const PaymentList = [
 const PaymentScreen = ({ navigation }: any) => {
    const { amount } = useLocalSearchParams();
   const formattedAmount = Array.isArray(amount) ? amount[0] : amount; 
+  const router = useRouter()
 
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
   const addToOrderHistoryListFromCart = useStore(
@@ -65,7 +66,7 @@ const PaymentScreen = ({ navigation }: any) => {
     calculateCartPrice();
     setTimeout(() => {
       setShowAnimation(false);
-      navigation.navigate('History');
+     router.push(`/history`)
     }, 2000);
   };
 

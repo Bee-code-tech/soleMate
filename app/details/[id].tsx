@@ -25,7 +25,7 @@ const DetailsScreen = () => {
   const router = useRouter();  
   
   const ItemOfIndex = useStore((state: any) => {
-    const list = state.CoffeeList.concat(state.BeanList);
+    const list = state.ShoeList.concat(state.SneakerList);
     return list.find((item: any) => item.id === id); 
   });
 

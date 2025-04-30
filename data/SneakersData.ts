@@ -15,6 +15,7 @@ const SneakersData = [
     ratings_count: '9,248',
     favourite: false,
     brand: 'Nike',
+    type: 'Sneaker',
     index: 0,
   },
   {
@@ -33,6 +34,7 @@ const SneakersData = [
     ratings_count: '12,034',
     favourite: false,
     brand: 'Nike',
+    type: 'Sneaker',
     index: 1,
   },
   {
@@ -52,6 +54,7 @@ const SneakersData = [
     favourite: false,
     brand: 'Jordan',
     index: 2,
+    type: 'Sneaker',
   },
   {
     id: 'S4',
@@ -70,6 +73,7 @@ const SneakersData = [
     favourite: false,
     brand: 'Nike',
     index: 3,
+    type: 'Sneaker',
   },
 ];
 
